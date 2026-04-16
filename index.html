@@ -370,8 +370,15 @@
     .pricing-grid {
       margin-top: 40px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+    }
+
+    .courses-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pricing-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
 
     .card,
@@ -460,6 +467,8 @@
 
     .price-card .btn {
       margin-top: 20px;
+      width: 100%;
+      text-align: center;
     }
 
     .featured-plan {
@@ -482,6 +491,29 @@
     }
 
     .featured-plan .btn:hover {
+      background: #d97706;
+    }
+
+    .vip-pack {
+      background: linear-gradient(to bottom right, rgba(4,120,87,0.96), rgba(6,95,70,0.96));
+      color: white;
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .vip-pack h4,
+    .vip-pack .price,
+    .vip-pack p,
+    .vip-pack .price-features,
+    .vip-pack .price span {
+      color: white;
+    }
+
+    .vip-pack .btn {
+      background: #f59e0b;
+      color: white;
+    }
+
+    .vip-pack .btn:hover {
       background: #d97706;
     }
 
@@ -663,6 +695,14 @@
       box-shadow: 0 0 0 3px rgba(220,38,38,0.10) !important;
     }
 
+    .submit-center {
+      grid-column: 1 / -1;
+      justify-self: center;
+      margin-top: 20px;
+      width: 260px;
+      text-align: center;
+    }
+
     .toast {
       position: fixed;
       bottom: 20px;
@@ -728,12 +768,17 @@
       transform: translateY(0);
     }
 
+    @media (max-width: 1200px) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 992px) {
       .hero,
       .meeting-layout,
       .about-layout,
-      .courses-grid,
-      .pricing-grid {
+      .courses-grid {
         grid-template-columns: 1fr;
       }
 
@@ -745,23 +790,18 @@
         font-size: 36px;
       }
 
-    .btn-wrapper{
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.btn-wrapper button{
-  width: 260px;
-}
-
       .stats {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 768px) {
+      .pricing-grid,
+      .contact-form,
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
       nav {
         gap: 12px;
       }
@@ -775,11 +815,6 @@
         font-size: 30px;
       }
 
-      .contact-form,
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
       .full-width {
         grid-column: auto;
       }
@@ -787,13 +822,17 @@
       .footer-content {
         flex-direction: column;
       }
+
+      .submit-center {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
   <video autoplay muted loop playsinline class="video-bg">
-    <source src="Qurran1.mp4.mp4" type="video/mp4">
+    <source src="Qurran1.mp4" type="video/mp4">
   </video>
 
   <div class="video-overlay"></div>
@@ -900,8 +939,8 @@
             </div>
             <h4>Quran Reading Basics</h4>
             <p>Learn Arabic letters, pronunciation, and basic reading rules.</p>
-<a href="dashboard.html" class="btn btn-primary">View Course</a>         
- </div>
+            <a href="dashboard.html" class="btn btn-primary">View Course</a>
+          </div>
 
           <div class="card reveal">
             <div class="card-top">
@@ -910,7 +949,7 @@
             </div>
             <h4>Tajwid Essentials</h4>
             <p>Understand the main tajwid rules with simple guided lessons.</p>
-<a href="dashboard.html" class="btn btn-primary">View Course</a>
+            <a href="dashboard.html" class="btn btn-primary">View Course</a>
           </div>
 
           <div class="card reveal">
@@ -920,7 +959,8 @@
             </div>
             <h4>Memorization Support</h4>
             <p>Follow structured memorization sessions with teacher guidance.</p>
-<a href="dashboard.html" class="btn btn-primary">View Course</a>          </div>
+            <a href="dashboard.html" class="btn btn-primary">View Course</a>
+          </div>
         </div>
       </div>
     </section>
@@ -931,51 +971,83 @@
           <p class="top">Pricing</p>
           <h3>Choose the plan that fits your learning journey</h3>
           <p>
-            NoorTech Academy offers flexible plans for children and adults,
-            with simple access to courses, meetings, and learning support.
+            NoorTech Academy offers 4 flexible plans for children and adults,
+            with quarterly payment and simple access to courses, meetings, and support.
           </p>
         </div>
 
         <div class="pricing-grid">
+
           <div class="price-card reveal">
-            <h4>Free Plan</h4>
-            <div class="price">0€ <span>/ month</span></div>
-            <p>A simple plan for users who want to discover the platform.</p>
+            <h4>Basic Plan</h4>
+            <div class="price">40€ <span>/ trimestre</span></div>
+            <p>A simple plan for students who want to start with the basics.</p>
             <ul class="price-features">
-              <li>Limited course access</li>
-              <li>Basic audio lessons</li>
-              <li>No live meetings</li>
-              <li>Beginner experience</li>
+              <li>2 sessions / week</li>
+              <li>Basic Quran reading</li>
+              <li>Group classes</li>
+              <li>WhatsApp support</li>
             </ul>
-            <a href="Inscription.html" class="btn btn-primary">Get Started</a>
+            <button class="btn btn-primary choose-pack-btn"
+                    data-pack="Basic Plan"
+                    data-price="40€ / trimestre">
+              Choose Plan
+            </button>
+          </div>
+
+          <div class="price-card reveal">
+            <h4>Standard Plan</h4>
+            <div class="price">70€ <span>/ trimestre</span></div>
+            <p>Perfect for students who want regular lessons and guided support.</p>
+            <ul class="price-features">
+              <li>3 sessions / week</li>
+              <li>Tajwid basics</li>
+              <li>Small groups</li>
+              <li>Priority support</li>
+            </ul>
+            <button class="btn btn-primary choose-pack-btn"
+                    data-pack="Standard Plan"
+                    data-price="70€ / trimestre">
+              Choose Plan
+            </button>
           </div>
 
           <div class="price-card featured-plan reveal">
             <div class="price-badge">Popular</div>
-            <h4>Standard Plan</h4>
-            <div class="price">10€ <span>/ month</span></div>
-            <p>Perfect for regular students who want more content and support.</p>
+            <h4>Premium Plan</h4>
+            <div class="price">100€ <span>/ trimestre</span></div>
+            <p>Ideal for students who want more sessions and better progress.</p>
             <ul class="price-features">
-              <li>Full access to courses</li>
-              <li>Audio and video lessons</li>
-              <li>1 live meeting / week</li>
-              <li>Email support</li>
+              <li>5 sessions / week</li>
+              <li>Advanced Tajwid</li>
+              <li>Personal follow-up</li>
+              <li>Priority meetings</li>
             </ul>
-            <a href="Inscription.html" class="btn">Choose Standard</a>
+            <button class="btn choose-pack-btn"
+                    data-pack="Premium Plan"
+                    data-price="100€ / trimestre">
+              Choose Plan
+            </button>
           </div>
 
-          <div class="price-card reveal">
-            <h4>Premium Plan</h4>
-            <div class="price">20€ <span>/ month</span></div>
-            <p>Advanced support for students who want a complete learning path.</p>
+          <div class="price-card vip-pack reveal">
+            <div class="price-badge">VIP</div>
+            <h4>VIP Plan</h4>
+            <div class="price">150€ <span>/ trimestre</span></div>
+            <p>Best choice for intensive Quran learning with private support.</p>
             <ul class="price-features">
-              <li>All Standard features</li>
-              <li>More live meetings</li>
-              <li>Priority support</li>
-              <li>Personalized guidance</li>
+              <li>Daily sessions</li>
+              <li>Private teacher</li>
+              <li>Full Quran program</li>
+              <li>Premium student support</li>
             </ul>
-            <a href="Inscription.html" class="btn btn-primary">Choose Premium</a>
+            <button class="btn choose-pack-btn"
+                    data-pack="VIP Plan"
+                    data-price="150€ / trimestre">
+              Choose Plan
+            </button>
           </div>
+
         </div>
       </div>
     </section>
@@ -1095,7 +1167,7 @@
               <span class="error" id="contactMessageError">Please enter your message.</span>
             </div>
 
-<button type="submit" class="btn btn-primary submit-center full-width-btn">Send Message</button>
+            <button type="submit" class="btn btn-primary submit-center">Send Message</button>
           </form>
         </div>
       </div>
@@ -1117,10 +1189,6 @@
   </div>
 
   <script>
-    function showMessage(text) {
-      alert(text);
-    }
-
     const header = document.getElementById("mainHeader");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
@@ -1168,7 +1236,6 @@
 
     function showToast() {
       contactToast.classList.add("show");
-
       setTimeout(() => {
         contactToast.classList.remove("show");
       }, 6400);
@@ -1238,6 +1305,20 @@
       const el = document.getElementById(inputId);
       el.addEventListener("input", () => {
         hideError(inputId, errorId);
+      });
+    });
+
+    const choosePackButtons = document.querySelectorAll(".choose-pack-btn");
+
+    choosePackButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedPack = button.getAttribute("data-pack");
+        const selectedPrice = button.getAttribute("data-price");
+
+        localStorage.setItem("selectedPack", selectedPack);
+        localStorage.setItem("selectedPrice", selectedPrice);
+
+        window.location.href = "Inscription.html";
       });
     });
   </script>
