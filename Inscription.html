@@ -726,7 +726,7 @@
         Your registration has been received successfully.<br>
         We will contact you after payment confirmation.
       </p>
-      <p class="redirect-text">Redirecting to Login page in 3 seconds...</p>
+      <p class="redirect-text">Redirecting to Payment page in 3 seconds...</p>
     </div>
   </div>
 
@@ -970,9 +970,9 @@
 
       successPopup.classList.add("active");
 
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 3000);
+setTimeout(() => {
+  window.location.href = "payment.html";
+}, 3000);
     });
 
     const inputsToWatch = ["firstName", "lastName", "birthDate", "email", "phone", "country", "confirmPassword"];
