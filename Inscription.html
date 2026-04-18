@@ -325,13 +325,13 @@
       color: #065f46;
     }
 
-    .-wrap {
+    .password-wrap {
       position: relative;
       display: flex;
       align-items: center;
     }
 
-    .-wrap input {
+    .password-wrap input {
       padding-right: 52px;
     }
 
@@ -667,9 +667,23 @@
           </div>
 
           <div class="form-group full">
-            <label for="country">Country / City</label>
-            <input type="text" id="country" placeholder="Country / City">
-            <span class="error" id="countryError">Please enter your country or city.</span>
+            <label for="country">Country</label>
+            <select id="country">
+              <option value="">Select your country</option>
+              <option value="Espagne">Espagne</option>
+              <option value="France">France</option>
+              <option value="Allemagne">Allemagne</option>
+              <option value="Belgique">Belgique</option>
+              <option value="Pays-Bas">Pays-Bas</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Italie">Italie</option>
+              <option value="Suède">Suède</option>
+              <option value="Bulgarie">Bulgarie</option>
+              <option value="Croatie">Croatie</option>
+              <option value="Irlande">Irlande</option>
+              <option value="Danemark">Danemark</option>
+            </select>
+            <span class="error" id="countryError">Please select your country.</span>
           </div>
 
           <div class="form-group full">
@@ -987,7 +1001,7 @@
       }
     });
 
-    const inputsToWatch = ["firstName", "lastName", "birthDate", "email", "phone", "country", "confirmPassword"];
+    const inputsToWatch = ["firstName", "lastName", "birthDate", "email", "phone", "confirmPassword"];
     inputsToWatch.forEach((id) => {
       const el = document.getElementById(id);
       el.addEventListener("input", () => {
@@ -995,6 +1009,10 @@
         const errorEl = document.getElementById(id + "Error");
         if (errorEl) errorEl.style.display = "none";
       });
+    });
+
+    document.getElementById("country").addEventListener("change", () => {
+      hideError("country", "countryError");
     });
 
     document.getElementById("level").addEventListener("change", () => {
