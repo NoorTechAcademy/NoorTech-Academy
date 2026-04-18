@@ -676,7 +676,7 @@
             <label for="password">Password</label>
             <div class="password-wrap">
               <input type="password" id="password" placeholder="Enter password">
-              <button type="button" class="toggle-password" data-target="password"></button>
+              <button type="button" class="toggle-password" data-target="password">👁️</button>
             </div>
             <div class="strength-box">
               <div class="strength-bar">
@@ -691,7 +691,7 @@
             <label for="confirmPassword">Confirm Password</label>
             <div class="password-wrap">
               <input type="password" id="confirmPassword" placeholder="Confirm password">
-              <button type="button" class="toggle-password" data-target="confirmPassword"></button>
+              <button type="button" class="toggle-password" data-target="confirmPassword">👁️</button>
             </div>
             <span class="error" id="confirmPasswordError">Passwords do not match.</span>
           </div>
@@ -722,11 +722,11 @@
     <div class="popup-content">
       <div class="popup-icon">✅</div>
       <h3>Registration Successful</h3>
-      <p>
+      <p id="successMessage">
         Your registration has been received successfully.<br>
         We will contact you after payment confirmation.
       </p>
-      <p class="redirect-text">Redirecting to Payment page in 3 seconds...</p>
+      <p class="redirect-text" id="redirectText">Redirecting to Payment page in 3 seconds...</p>
     </div>
   </div>
 
@@ -746,6 +746,8 @@
     const studentTypeInput = document.getElementById("studentType");
     const selectedPlanInput = document.getElementById("selectedPlan");
     const successPopup = document.getElementById("successPopup");
+    const successMessage = document.getElementById("successMessage");
+    const redirectText = document.getElementById("redirectText");
     const passwordInput = document.getElementById("password");
     const confirmPasswordInput = document.getElementById("confirmPassword");
     const strengthFill = document.getElementById("strengthFill");
@@ -970,9 +972,19 @@
 
       successPopup.classList.add("active");
 
-setTimeout(() => {
-  window.location.href = "payment.html";
-}, 3000);
+      if (selectedPlan.includes("Free Pack")) {
+        successMessage.innerHTML = "Your free trial registration has been received successfully.<br>You can start your 1 week trial now.";
+        redirectText.textContent = "Redirecting to Login page in 3 seconds...";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 3000);
+      } else {
+        successMessage.innerHTML = "Your registration has been received successfully.<br>We will contact you after payment confirmation.";
+        redirectText.textContent = "Redirecting to Payment page in 3 seconds...";
+        setTimeout(() => {
+          window.location.href = "payment.html";
+        }, 3000);
+      }
     });
 
     const inputsToWatch = ["firstName", "lastName", "birthDate", "email", "phone", "country", "confirmPassword"];
