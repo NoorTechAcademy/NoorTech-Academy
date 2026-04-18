@@ -298,8 +298,8 @@
     }
 
     html{
-  scroll-behavior: smooth;
-}
+      scroll-behavior: smooth;
+    }
 
     .hero-panel .small {
       font-size: 13px;
@@ -382,7 +382,7 @@
     }
 
     .pricing-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
 
     .card,
@@ -519,6 +519,16 @@
 
     .vip-pack .btn:hover {
       background: #d97706;
+    }
+
+    .free-pack {
+      border: 2px solid #facc15;
+      box-shadow: 0 0 25px rgba(250,204,21,0.35);
+    }
+
+    .free-pack .price-badge {
+      background: #facc15;
+      color: #1f2937;
     }
 
     .meeting-section {
@@ -982,6 +992,24 @@
 
         <div class="pricing-grid">
 
+          <div class="price-card free-pack reveal">
+            <div class="price-badge">Free Trial</div>
+            <h4>Free Pack</h4>
+            <div class="price">0€ <span>/ semaine d’essai</span></div>
+            <p>A simple free trial to discover the platform before choosing a full plan.</p>
+            <ul class="price-features">
+              <li>1 week trial access</li>
+              <li>Basic Quran introduction</li>
+              <li>1 trial live session</li>
+              <li>Platform discovery</li>
+            </ul>
+            <button class="btn btn-primary choose-pack-btn"
+                    data-pack="Free Pack"
+                    data-price="0€ / semaine d’essai">
+              Start Free Trial
+            </button>
+          </div>
+
           <div class="price-card reveal">
             <h4>Basic Plan</h4>
             <div class="price">40€ <span>/ trimestre</span></div>
@@ -1066,8 +1094,8 @@
             improve tajwid, and receive personalized support.
           </p>
           <button class="btn btn-primary" onclick="window.location.href='login.html'" style="background:#f59e0b;">
-  Join a Meeting
-</button>
+            Join a Meeting
+          </button>
         </div>
 
         <div class="meeting-cards">
