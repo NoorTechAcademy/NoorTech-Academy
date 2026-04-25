@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NoorTech Academy</title>
-  <link rel="icon" type="image/jpeg" href="logo.jpg.jpeg">
   <style>
     * {
       margin: 0;
@@ -81,62 +80,18 @@
       gap: 12px;
     }
 
-    .logo-box {
-      width: 58px;
-      height: 58px;
-      padding: 4px;
-      border-radius: 18px;
-      background: #ffffff;
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: #047857;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid #facc15;
-      box-shadow:
-        0 0 10px rgba(250, 204, 21, 0.85),
-        0 0 22px rgba(250, 204, 21, 0.45),
-        0 8px 20px rgba(0,0,0,0.22);
-      overflow: hidden;
-      transition: 0.3s ease;
-      animation: logoGlow 2.8s ease-in-out infinite alternate;
-    }
-
-    .logo-box:hover {
-      transform: scale(1.08) rotate(-2deg);
-      box-shadow:
-        0 0 14px rgba(250, 204, 21, 1),
-        0 0 30px rgba(250, 204, 21, 0.65),
-        0 10px 24px rgba(0,0,0,0.28);
-    }
-
-    .logo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 14px;
-      display: block;
-      filter: brightness(1.08) contrast(1.08) saturate(1.15);
-    }
-
-    .header-scrolled .logo-box {
-      background: #ffffff;
-      box-shadow:
-        0 0 8px rgba(250, 204, 21, 0.55),
-        0 6px 16px rgba(0,0,0,0.14);
-    }
-
-    @keyframes logoGlow {
-      from {
-        box-shadow:
-          0 0 8px rgba(250, 204, 21, 0.65),
-          0 0 18px rgba(250, 204, 21, 0.35),
-          0 8px 20px rgba(0,0,0,0.20);
-      }
-      to {
-        box-shadow:
-          0 0 14px rgba(250, 204, 21, 1),
-          0 0 28px rgba(250, 204, 21, 0.55),
-          0 8px 20px rgba(0,0,0,0.22);
-      }
+      font-weight: bold;
+      font-size: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
     .logo h1 {
@@ -886,6 +841,270 @@
         width: 100%;
       }
     }
+  
+
+    /* ===== NAVBAR ULTRA PRO + LOGO ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+    }
+
+    .header-scrolled {
+      background: rgba(255,255,255,0.86);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1200;
+    }
+
+    .logo-box {
+      width: 54px;
+      height: 54px;
+      background: #ffffff;
+      padding: 5px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 14px rgba(250,204,21,0.55),
+        0 8px 20px rgba(0,0,0,0.20);
+      transition: 0.3s ease;
+    }
+
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      filter: none;
+    }
+
+    .logo:hover .logo-box {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow:
+        0 0 18px rgba(250,204,21,0.75),
+        0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .logo h1 {
+      font-size: 20px;
+      color: white;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .logo p {
+      font-size: 12px;
+      color: #d1fae5;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .header-scrolled .logo h1 {
+      color: #064e3b;
+    }
+
+    .header-scrolled .logo p {
+      color: #6b7280;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    nav a {
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.3s;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #facc15, #10b981);
+      border-radius: 999px;
+      transition: 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav a:hover {
+      color: #facc15;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-scrolled nav a {
+      color: #1f2937;
+    }
+
+    .header-scrolled nav a:hover {
+      color: #047857;
+    }
+
+    .hamburger {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1200;
+      transition: 0.3s ease;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: white;
+      border-radius: 99px;
+      transition: 0.3s ease;
+    }
+
+    .header-scrolled .hamburger {
+      border: 1px solid rgba(4,120,87,0.20);
+      background: rgba(4,120,87,0.08);
+    }
+
+    .header-scrolled .hamburger span {
+      background: #064e3b;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (max-width: 1050px) {
+      .hamburger {
+        display: flex;
+        margin-left: auto;
+      }
+
+      .navbar {
+        position: relative;
+      }
+
+      nav {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 18px;
+        border-radius: 0 0 22px 22px;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 18px 35px rgba(0,0,0,0.16);
+      }
+
+      nav.active {
+        display: flex;
+        animation: mobileMenu 0.28s ease;
+      }
+
+      nav a {
+        width: 100%;
+        color: #064e3b;
+        padding: 14px 8px;
+      }
+
+      nav a:hover {
+        color: #047857;
+      }
+
+      nav a::after {
+        left: 8px;
+        transform: none;
+        bottom: 8px;
+      }
+
+      nav a:hover::after {
+        width: 45px;
+      }
+
+      .navbar-btn {
+        display: none;
+      }
+    }
+
+    @keyframes mobileMenu {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .logo h1 {
+        font-size: 17px;
+      }
+
+      .logo p {
+        font-size: 11px;
+      }
+
+      .logo-box {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -900,7 +1119,7 @@
     <div class="container navbar">
       <div class="logo">
         <div class="logo-box">
-          <img src="logo.jpg.jpeg" alt="NoorTech Academy Logo" class="logo-img">
+          <img src="logo.jpg.jpeg" alt="NoorTech Academy Logo">
         </div>
         <div>
           <h1>NoorTech Academy</h1>
@@ -908,7 +1127,13 @@
         </div>
       </div>
 
-      <nav>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="navMenu">
         <a href="#home">Home</a>
         <a href="#courses">Courses</a>
         <a href="#pricing">Pricing</a>
@@ -918,7 +1143,7 @@
         <a href="Inscription.html">Register</a>
       </nav>
 
-      <a href="Inscription.html" class="btn btn-primary">Choose Your Program</a>
+      <a href="Inscription.html" class="btn btn-primary navbar-btn">Choose Your Program</a>
     </div>
   </header>
 
@@ -1275,6 +1500,21 @@
       } else {
         header.classList.remove("header-scrolled");
       }
+    });
+
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const navMenu = document.getElementById("navMenu");
+
+    hamburgerBtn.addEventListener("click", () => {
+      hamburgerBtn.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+
+    navMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburgerBtn.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
     });
 
     const reveals = document.querySelectorAll(".reveal");
