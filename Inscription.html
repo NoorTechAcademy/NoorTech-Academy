@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Registration - NoorTech Academy</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpg.jpeg" />
   <style>
     * {
       margin: 0;
@@ -84,18 +85,38 @@
       gap: 12px;
     }
 
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: #047857;
-      color: white;
+    .logo-box {
+      width: 58px;
+      height: 58px;
+      padding: 4px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 2px solid #facc15;
+      box-shadow:
+        0 0 12px rgba(250,204,21,0.75),
+        0 8px 20px rgba(0,0,0,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+      transition: 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .logo-box:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow:
+        0 0 18px rgba(250,204,21,0.95),
+        0 12px 26px rgba(0,0,0,0.22);
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      filter: brightness(1.05) contrast(1.08) saturate(1.12);
     }
 
     .logo h1 {
@@ -551,6 +572,11 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .logo-box {
+        width: 52px;
+        height: 52px;
+      }
     }
   </style>
 </head>
@@ -559,7 +585,9 @@
   <header id="mainHeader">
     <div class="container navbar">
       <div class="logo">
-        <div class="logo-icon">N</div>
+        <div class="logo-box">
+          <img src="logo.jpg.jpeg" alt="NoorTech Academy Logo" class="logo-img">
+        </div>
         <div>
           <h1>NoorTech Academy</h1>
           <p>Quran E-learning Platform</p>
