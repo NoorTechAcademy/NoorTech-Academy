@@ -890,7 +890,7 @@
         </form>
 
         <p class="note">
-          After registration, access to courses and meeting sessions will be available only after payment confirmation.
+          After registration, your information will be saved and sent to the academy after payment confirmation.
         </p>
       </div>
     </div>
@@ -1090,6 +1090,7 @@
       const selectedPlan = selectedPlanInput.value.trim();
       const phone = document.getElementById("phone").value.trim();
       const country = document.getElementById("country").value.trim();
+      const additionalInfo = document.getElementById("message").value.trim();
       const password = passwordInput.value;
       const confirmPassword = confirmPasswordInput.value;
 
@@ -1169,6 +1170,17 @@
       }
 
       if (!isValid) return;
+
+      localStorage.setItem("studentFirstName", firstName);
+      localStorage.setItem("studentLastName", lastName);
+      localStorage.setItem("studentBirthDate", birthDate);
+      localStorage.setItem("studentEmail", email);
+      localStorage.setItem("studentType", studentType);
+      localStorage.setItem("studentLevel", level);
+      localStorage.setItem("studentPlan", selectedPlan);
+      localStorage.setItem("studentPhone", phone);
+      localStorage.setItem("studentCountry", country);
+      localStorage.setItem("studentAdditionalInfo", additionalInfo || "No additional information");
 
       successPopup.classList.add("active");
 
