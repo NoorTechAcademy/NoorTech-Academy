@@ -1184,19 +1184,12 @@
 
       successPopup.classList.add("active");
 
-      if (selectedPlan.includes("Free Pack")) {
-        successMessage.innerHTML = "Your free trial registration has been received successfully.<br>You can start your 1 week trial now.";
-        redirectText.textContent = "Redirecting to Login page in 3 seconds...";
-        setTimeout(() => {
-          window.location.href = "login.html";
-        }, 3000);
-      } else {
-        successMessage.innerHTML = "Your registration has been received successfully.<br>We will contact you after payment confirmation.";
-        redirectText.textContent = "Redirecting to Payment page in 3 seconds...";
-        setTimeout(() => {
-          window.location.href = "payment.html";
-        }, 3000);
-      }
+      successMessage.innerHTML = "Your registration has been received successfully.<br>Please confirm your payment to complete your registration.";
+      redirectText.textContent = "Redirecting to Payment page in 3 seconds...";
+
+      setTimeout(() => {
+        window.location.href = "payment.html";
+      }, 3000);
     });
 
     const inputsToWatch = ["firstName", "lastName", "birthDate", "email", "phone", "confirmPassword"];
