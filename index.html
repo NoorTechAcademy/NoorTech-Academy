@@ -1445,11 +1445,7 @@
             </p>
           </div>
 
-          <form id="contactForm" class="contact-form" action="https://formsubmit.co/noortechacademy@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New Contact Message - NoorTech Academy">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="index.html#contact">
+          <form id="contactForm" class="contact-form" novalidate>
             <div class="contact-group">
               <input type="text" id="contactFirstName" name="First Name" placeholder="First Name">
               <span class="error" id="contactFirstNameError">Please enter your first name.</span>
@@ -1565,6 +1561,8 @@
     }
 
     contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
       const firstName = document.getElementById("contactFirstName").value.trim();
       const lastName = document.getElementById("contactLastName").value.trim();
       const email = document.getElementById("contactEmail").value.trim();
@@ -1608,12 +1606,30 @@
         hideError("contactMessage", "contactMessageError");
       }
 
-      if (!isValid) {
-        e.preventDefault();
-        return;
-      }
+      if (!isValid) return;
 
-      showToast();
+      const formData = new FormData();
+      formData.append("_subject", "New Contact Message - NoorTech Academy");
+      formData.append("_captcha", "false");
+      formData.append("_template", "table");
+      formData.append("First Name", firstName);
+      formData.append("Last Name", lastName);
+      formData.append("Email", email);
+      formData.append("Phone", phone);
+      formData.append("Message", message);
+
+      fetch("https://formsubmit.co/ajax/noortechacademy@gmail.com", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        showToast();
+        contactForm.reset();
+      })
+      .catch(error => {
+        alert("Message not sent. Please try again.");
+      });
     });
 
     const contactInputs = [
