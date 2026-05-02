@@ -1445,29 +1445,33 @@
             </p>
           </div>
 
-          <form id="contactForm" class="contact-form" novalidate>
+          <form id="contactForm" class="contact-form" action="https://formsubmit.co/noortechacademy@gmail.com" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New Contact Message - NoorTech Academy">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="index.html#contact">
             <div class="contact-group">
-              <input type="text" id="contactFirstName" placeholder="First Name">
+              <input type="text" id="contactFirstName" name="First Name" placeholder="First Name">
               <span class="error" id="contactFirstNameError">Please enter your first name.</span>
             </div>
 
             <div class="contact-group">
-              <input type="text" id="contactLastName" placeholder="Last Name">
+              <input type="text" id="contactLastName" name="Last Name" placeholder="Last Name">
               <span class="error" id="contactLastNameError">Please enter your last name.</span>
             </div>
 
             <div class="contact-group">
-              <input type="email" id="contactEmail" placeholder="Your Email">
+              <input type="email" id="contactEmail" name="Email" placeholder="Your Email">
               <span class="error" id="contactEmailError">Please enter a valid email address.</span>
             </div>
 
             <div class="contact-group">
-              <input type="tel" id="contactPhone" placeholder="Phone Number">
+              <input type="tel" id="contactPhone" name="Phone" placeholder="Phone Number">
               <span class="error" id="contactPhoneError">Please enter a valid phone number.</span>
             </div>
 
             <div class="contact-group full-width">
-              <textarea id="contactMessage" placeholder="Your Message"></textarea>
+              <textarea id="contactMessage" name="Message" placeholder="Your Message"></textarea>
               <span class="error" id="contactMessageError">Please enter your message.</span>
             </div>
 
@@ -1561,8 +1565,6 @@
     }
 
     contactForm.addEventListener("submit", function(e) {
-      e.preventDefault();
-
       const firstName = document.getElementById("contactFirstName").value.trim();
       const lastName = document.getElementById("contactLastName").value.trim();
       const email = document.getElementById("contactEmail").value.trim();
@@ -1606,10 +1608,12 @@
         hideError("contactMessage", "contactMessageError");
       }
 
-      if (!isValid) return;
+      if (!isValid) {
+        e.preventDefault();
+        return;
+      }
 
       showToast();
-      contactForm.reset();
     });
 
     const contactInputs = [
