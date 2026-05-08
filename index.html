@@ -1105,6 +1105,57 @@
       }
     }
 
+
+    /* ===== PRICING BUTTONS ALIGNED FIX ===== */
+    .pricing-grid {
+      align-items: stretch !important;
+    }
+
+    .pricing-grid .price-card {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+      min-height: 560px;
+    }
+
+    .pricing-grid .price-card h4 {
+      min-height: 68px;
+    }
+
+    .pricing-grid .price-card p {
+      min-height: 105px;
+    }
+
+    .pricing-grid .price-features {
+      flex: 1 !important;
+      min-height: 185px;
+    }
+
+    .pricing-grid .price-card .btn {
+      margin-top: auto !important;
+      width: 100% !important;
+      text-align: center !important;
+      display: block !important;
+    }
+
+    @media (max-width: 1200px) {
+      .pricing-grid .price-card {
+        min-height: 520px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid .price-card {
+        min-height: auto;
+      }
+
+      .pricing-grid .price-card h4,
+      .pricing-grid .price-card p,
+      .pricing-grid .price-features {
+        min-height: auto;
+      }
+    }
+
   </style>
 </head>
 <body>
