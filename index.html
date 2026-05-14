@@ -1659,27 +1659,42 @@
 
       if (!isValid) return;
 
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+
       const formData = new FormData();
       formData.append("_subject", "New Contact Message - NoorTech Academy");
-      formData.append("_captcha", "false");
-      formData.append("_template", "table");
+      formData.append("Project", "NoorTech Academy");
+      formData.append("Message Type", "Contact Message");
       formData.append("First Name", firstName);
       formData.append("Last Name", lastName);
       formData.append("Email", email);
       formData.append("Phone", phone);
       formData.append("Message", message);
+      formData.append("Date", new Date().toLocaleString());
 
-      fetch("https://formsubmit.co/ajax/noortechacademy@gmail.com", {
+      fetch("https://formspree.io/f/xwvyjynr", {
         method: "POST",
-        body: formData
+        body: formData,
+        headers: {
+          "Accept": "application/json"
+        }
       })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Formspree error");
+        }
+
         showToast();
         contactForm.reset();
       })
-      .catch(error => {
+      .catch(() => {
         alert("Message not sent. Please try again.");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
       });
     });
 
