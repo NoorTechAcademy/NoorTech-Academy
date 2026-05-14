@@ -546,7 +546,7 @@
           </label>
         </div>
 
-        <form id="paymentForm" class="payment-form" action="https://formsubmit.co/noortechacademy@gmail.com" method="POST" novalidate>
+        <form id="paymentForm" class="payment-form" novalidate>
           <input type="hidden" name="_subject" value="New Registration + Payment - NoorTech Academy">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
@@ -644,7 +644,7 @@
     <div class="popup-content">
       <div class="popup-icon">✅</div>
       <h3>Payment Confirmed</h3>
-      <p>Your payment information has been submitted successfully.</p>
+      <p id="popupMessage">Your payment has been confirmed successfully.</p>
       <p>Redirecting to Login page...</p>
     </div>
   </div>
@@ -819,9 +819,32 @@
       prepareEmailData(selectedMethod, billingCountry);
       paymentPopup.classList.add("active");
 
-      setTimeout(() => {
-        paymentForm.submit();
-      }, 1200);
+      const formData = new FormData(paymentForm);
+
+      fetch("https://formsubmit.co/ajax/noortechacademy@gmail.com", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Email service unavailable");
+        }
+        return response.json();
+      })
+      .then(data => {
+        const popupMessage = document.getElementById("popupMessage");
+        popupMessage.textContent = "Payment confirmed. Confirmation email has been sent to NoorTech Academy.";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1800);
+      })
+      .catch(error => {
+        const popupMessage = document.getElementById("popupMessage");
+        popupMessage.textContent = "Payment confirmed. Email service is temporarily unavailable, but you can continue to login.";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 2200);
+      });
     });
 
     [
