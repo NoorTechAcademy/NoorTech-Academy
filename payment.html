@@ -547,11 +547,6 @@
         </div>
 
         <form id="paymentForm" class="payment-form" novalidate>
-          <input type="hidden" name="_subject" value="New Registration + Payment - NoorTech Academy">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" id="nextPage" value="login.html">
-
           <input type="hidden" name="First Name" id="mailFirstName">
           <input type="hidden" name="Last Name" id="mailLastName">
           <input type="hidden" name="Date of Birth" id="mailBirthDate">
@@ -644,7 +639,7 @@
     <div class="popup-content">
       <div class="popup-icon">✅</div>
       <h3>Payment Confirmed</h3>
-      <p id="popupMessage">Your payment has been confirmed successfully.</p>
+      <p>Your payment information has been submitted successfully.</p>
       <p>Redirecting to Login page...</p>
     </div>
   </div>
@@ -723,8 +718,8 @@
       document.getElementById("mailBillingCountry").value = billingCountry;
       document.getElementById("mailConfirmationDate").value = new Date().toLocaleString();
 
-      const loginUrl = new URL("login.html", window.location.href).href;
-      document.getElementById("nextPage").value = loginUrl;
+      // Email data is prepared for Formspree.
+      // Card number and CVV are intentionally not included.
     }
 
     paymentForm.addEventListener("submit", function(e) {
@@ -817,33 +812,40 @@
       if (!isValid) return;
 
       prepareEmailData(selectedMethod, billingCountry);
+
       paymentPopup.classList.add("active");
+
+      const submitBtn = paymentForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Processing...";
 
       const formData = new FormData(paymentForm);
 
-      fetch("https://formsubmit.co/ajax/noortechacademy@gmail.com", {
+      formData.append("_subject", "New Registration + Payment - NoorTech Academy");
+      formData.append("Project", "NoorTech Academy");
+      formData.append("Message Type", "Payment Confirmation");
+
+      fetch("https://formspree.io/f/xwvyjynr", {
         method: "POST",
-        body: formData
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Email service unavailable");
+        body: formData,
+        headers: {
+          "Accept": "application/json"
         }
-        return response.json();
       })
-      .then(data => {
-        const popupMessage = document.getElementById("popupMessage");
-        popupMessage.textContent = "Payment confirmed. Confirmation email has been sent to NoorTech Academy.";
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Formspree error");
+        }
+
         setTimeout(() => {
           window.location.href = "login.html";
-        }, 1800);
+        }, 1500);
       })
-      .catch(error => {
-        const popupMessage = document.getElementById("popupMessage");
-        popupMessage.textContent = "Payment confirmed. Email service is temporarily unavailable, but you can continue to login.";
+      .catch(() => {
+        alert("Payment confirmed, but email service is temporarily unavailable. You will be redirected to login.");
         setTimeout(() => {
           window.location.href = "login.html";
-        }, 2200);
+        }, 800);
       });
     });
 
