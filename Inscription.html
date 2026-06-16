@@ -54,6 +54,7 @@
       margin: auto;
     }
 
+    /* ===== HEADER / NAVBAR ===== */
     header {
       position: sticky;
       top: 0;
@@ -80,67 +81,79 @@
       flex-wrap: nowrap;
     }
 
-.logo-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 1200;
-}
+    /* ===== LOGO ===== */
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      z-index: 1200;
+      flex-shrink: 0;
+    }
 
-.logo-box {
-  width: 54px;
-  height: 54px;
-  padding: 5px;
-  border-radius: 18px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow:
-    0 0 14px rgba(250,204,21,0.55),
-    0 10px 24px rgba(0,0,0,0.18);
-  transition: 0.35s ease;
-}
+    .logo-box {
+      width: 54px;
+      height: 54px;
+      padding: 5px;
+      border-radius: 18px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 14px rgba(250,204,21,0.55),
+        0 10px 24px rgba(0,0,0,0.18);
+      transition: 0.35s ease;
+    }
 
-.logo-box:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow:
-    0 0 20px rgba(250,204,21,0.75),
-    0 14px 28px rgba(0,0,0,0.20);
-}
+    .logo-box:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow:
+        0 0 20px rgba(250,204,21,0.75),
+        0 14px 28px rgba(0,0,0,0.20);
+    }
 
-.logo-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 14px;
-  display: block;
-}
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
 
-.logo-wrapper h1 {
-  font-size: 20px;
-  color: white;
-  transition: 0.3s;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
-}
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
 
-.logo-wrapper p {
-  font-size: 12px;
-  color: #d1fae5;
-  transition: 0.3s;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
-}
+    .logo-text h1 {
+      font-size: 20px;
+      color: white;
+      transition: 0.3s;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      margin: 0;
+    }
 
-    .header-scrolled . h1 {
+    .logo-text p {
+      font-size: 12px;
+      color: #d1fae5;
+      transition: 0.3s;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      margin: 0;
+    }
+
+    .header-scrolled .logo-text h1 {
       color: #064e3b;
       text-shadow: none;
     }
 
-    .header-scrolled . p {
+    .header-scrolled .logo-text p {
       color: #6b7280;
       text-shadow: none;
     }
 
+    /* ===== NAVIGATION ===== */
     nav {
       display: flex;
       gap: 24px;
@@ -156,6 +169,7 @@
       position: relative;
       padding: 8px 0;
       text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      text-decoration: none;
     }
 
     nav a::after {
@@ -187,6 +201,7 @@
       color: #047857;
     }
 
+    /* ===== HAMBURGER ===== */
     .hamburger {
       display: none;
       width: 44px;
@@ -233,6 +248,7 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
+    /* ===== REGISTER SECTION ===== */
     .register-section {
       min-height: calc(100vh - 90px);
       display: flex;
@@ -331,6 +347,7 @@
       animation-delay: 0.9s;
     }
 
+    /* ===== FORM ===== */
     .form-box {
       background: rgba(255,255,255,0.92);
       border: 1px solid rgba(255,255,255,0.35);
@@ -520,6 +537,7 @@
       animation: shake 0.28s ease;
     }
 
+    /* ===== FOOTER ===== */
     footer {
       border-top: 1px solid #d1fae5;
       background: rgba(255,255,255,0.8);
@@ -537,6 +555,7 @@
       font-size: 14px;
     }
 
+    /* ===== POPUP ===== */
     .popup {
       position: fixed;
       inset: 0;
@@ -597,6 +616,7 @@
       color: #6b7280;
     }
 
+    /* ===== ANIMATIONS ===== */
     @keyframes popupScale {
       from {
         transform: scale(0.85);
@@ -636,6 +656,7 @@
       100% { transform: translateX(0); }
     }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .register-wrapper {
         grid-template-columns: 1fr;
@@ -702,15 +723,15 @@
         grid-column: auto;
       }
 
-      . h1 {
+      .logo-text h1 {
         font-size: 17px;
       }
 
-      . p {
+      .logo-text p {
         font-size: 11px;
       }
 
-      .-box {
+      .logo-box {
         width: 48px;
         height: 48px;
       }
@@ -719,16 +740,19 @@
 </head>
 <body>
 
+  <!-- ===== HEADER ===== -->
   <header id="mainHeader">
-  <div class="logo-wrapper">
-  <div class="logo-box">
-    <img src="Logoo.jpg.png" alt="NoorTech Academy Logo">
-  </div>
-  <div>
-    <h1>NoorTech Academy</h1>
-    <p>Quran E-learning Platform</p>
-  </div>
-</div>
+    <div class="container navbar">
+      <a href="index.html" class="logo-wrapper">
+        <div class="logo-box">
+          <img src="Logoo.jpg.png" alt="NoorTech Academy Logo">
+        </div>
+        <div class="logo-text">
+          <h1>NoorTech Academy</h1>
+          <p>Quran E-learning Platform</p>
+        </div>
+      </a>
+
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" type="button">
         <span></span>
         <span></span>
@@ -745,9 +769,11 @@
     </div>
   </header>
 
+  <!-- ===== REGISTER SECTION ===== -->
   <section class="register-section">
     <div class="container register-wrapper">
 
+      <!-- Info Box -->
       <div class="info-box">
         <video autoplay muted loop playsinline class="box-video">
           <source src="Qurran3.mp4.mp4" type="video/mp4">
@@ -772,6 +798,7 @@
         </div>
       </div>
 
+      <!-- Form Box -->
       <div class="form-box">
         <h3>Student Registration Form</h3>
         <p>Please fill in the form below to register in our Quran learning platform.</p>
@@ -859,7 +886,7 @@
             <label for="password">Password</label>
             <div class="password-wrap">
               <input type="password" id="password" placeholder="Enter password">
-              <button type="button" class="toggle-password" data-target="password"></button>
+              <button type="button" class="toggle-password" data-target="password">👁️</button>
             </div>
             <div class="strength-box">
               <div class="strength-bar">
@@ -874,7 +901,7 @@
             <label for="confirmPassword">Confirm Password</label>
             <div class="password-wrap">
               <input type="password" id="confirmPassword" placeholder="Confirm password">
-              <button type="button" class="toggle-password" data-target="confirmPassword"></button>
+              <button type="button" class="toggle-password" data-target="confirmPassword">👁️</button>
             </div>
             <span class="error" id="confirmPasswordError">Passwords do not match.</span>
           </div>
@@ -894,6 +921,7 @@
     </div>
   </section>
 
+  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="container footer-content">
       <p>© 2026 NoorTech Academy. All rights reserved.</p>
@@ -901,6 +929,7 @@
     </div>
   </footer>
 
+  <!-- ===== POPUP ===== -->
   <div id="successPopup" class="popup">
     <div class="popup-content">
       <div class="popup-icon">✅</div>
@@ -913,7 +942,9 @@
     </div>
   </div>
 
+  <!-- ===== JAVASCRIPT ===== -->
   <script>
+    // ===== HEADER SCROLL =====
     const header = document.getElementById("mainHeader");
     const hamburgerBtn = document.getElementById("hamburgerBtn");
     const navMenu = document.getElementById("navMenu");
@@ -926,6 +957,7 @@
       }
     });
 
+    // ===== HAMBURGER MENU =====
     hamburgerBtn.addEventListener("click", () => {
       hamburgerBtn.classList.toggle("active");
       navMenu.classList.toggle("active");
@@ -938,6 +970,7 @@
       });
     });
 
+    // ===== FORM ELEMENTS =====
     const form = document.getElementById("registrationForm");
     const birthDateInput = document.getElementById("birthDate");
     const ageBox = document.getElementById("ageBox");
@@ -951,6 +984,7 @@
     const strengthFill = document.getElementById("strengthFill");
     const strengthText = document.getElementById("strengthText");
 
+    // ===== CALCULATE AGE =====
     function calculateAge(birthDate) {
       const today = new Date();
       const dob = new Date(birthDate);
@@ -986,6 +1020,7 @@
       studentTypeInput.value = age < 18 ? "Child" : "Adult";
     }
 
+    // ===== LOAD SELECTED PLAN =====
     function loadSelectedPlan() {
       const savedPack = localStorage.getItem("selectedPack");
       const savedPrice = localStorage.getItem("selectedPrice");
@@ -997,6 +1032,7 @@
       }
     }
 
+    // ===== PASSWORD STRENGTH =====
     function evaluatePasswordStrength(password) {
       let score = 0;
 
@@ -1032,6 +1068,7 @@
       }
     }
 
+    // ===== EVENTS =====
     birthDateInput.addEventListener("change", updateAgeAndType);
 
     window.addEventListener("load", () => {
@@ -1044,6 +1081,7 @@
       hideError("password", "passwordError");
     });
 
+    // ===== VALIDATION FUNCTIONS =====
     function showError(inputId, messageId) {
       document.getElementById(inputId).classList.add("input-error");
       document.getElementById(messageId).style.display = "block";
@@ -1062,6 +1100,7 @@
       return /^[0-9+\s()-]{8,20}$/.test(phone);
     }
 
+    // ===== TOGGLE PASSWORD =====
     document.querySelectorAll(".toggle-password").forEach((button) => {
       button.addEventListener("click", () => {
         const targetId = button.getAttribute("data-target");
@@ -1076,6 +1115,7 @@
       });
     });
 
+    // ===== FORM SUBMIT =====
     form.addEventListener("submit", function(event) {
       event.preventDefault();
 
@@ -1088,12 +1128,12 @@
       const selectedPlan = selectedPlanInput.value.trim();
       const phone = document.getElementById("phone").value.trim();
       const country = document.getElementById("country").value.trim();
-      const additionalInfo = document.getElementById("message").value.trim();
       const password = passwordInput.value;
       const confirmPassword = confirmPasswordInput.value;
 
       let isValid = true;
 
+      // First Name
       if (!firstName) {
         showError("firstName", "firstNameError");
         isValid = false;
@@ -1101,6 +1141,7 @@
         hideError("firstName", "firstNameError");
       }
 
+      // Last Name
       if (!lastName) {
         showError("lastName", "lastNameError");
         isValid = false;
@@ -1108,6 +1149,7 @@
         hideError("lastName", "lastNameError");
       }
 
+      // Birth Date
       if (!birthDate) {
         showError("birthDate", "birthDateError");
         isValid = false;
@@ -1115,6 +1157,7 @@
         hideError("birthDate", "birthDateError");
       }
 
+      // Email
       if (!email || !isValidEmail(email)) {
         showError("email", "emailError");
         isValid = false;
@@ -1122,11 +1165,13 @@
         hideError("email", "emailError");
       }
 
+      // Student Type
       if (!studentType) {
         showError("birthDate", "birthDateError");
         isValid = false;
       }
 
+      // Level
       if (!level) {
         document.getElementById("levelError").style.display = "block";
         isValid = false;
@@ -1134,11 +1179,13 @@
         document.getElementById("levelError").style.display = "none";
       }
 
+      // Selected Plan
       if (!selectedPlan || selectedPlan === "No plan selected yet") {
         alert("Please choose a plan first from the Home page.");
         isValid = false;
       }
 
+      // Phone
       if (!phone || !isValidPhone(phone)) {
         showError("phone", "phoneError");
         isValid = false;
@@ -1146,6 +1193,7 @@
         hideError("phone", "phoneError");
       }
 
+      // Country
       if (!country) {
         showError("country", "countryError");
         isValid = false;
@@ -1153,6 +1201,7 @@
         hideError("country", "countryError");
       }
 
+      // Password
       if (!password || password.length < 6) {
         showError("password", "passwordError");
         isValid = false;
@@ -1160,6 +1209,7 @@
         hideError("password", "passwordError");
       }
 
+      // Confirm Password
       if (!confirmPassword || confirmPassword !== password) {
         showError("confirmPassword", "confirmPasswordError");
         isValid = false;
@@ -1169,6 +1219,7 @@
 
       if (!isValid) return;
 
+      // Save to localStorage
       localStorage.setItem("studentFirstName", firstName);
       localStorage.setItem("studentLastName", lastName);
       localStorage.setItem("studentBirthDate", birthDate);
@@ -1178,10 +1229,10 @@
       localStorage.setItem("studentPlan", selectedPlan);
       localStorage.setItem("studentPhone", phone);
       localStorage.setItem("studentCountry", country);
-      localStorage.setItem("studentAdditionalInfo", additionalInfo || "No additional information");
+      localStorage.setItem("studentAdditionalInfo", document.getElementById("message").value.trim() || "No additional information");
 
+      // Show popup
       successPopup.classList.add("active");
-
       successMessage.innerHTML = "Your registration has been received successfully.<br>Please confirm your payment to complete your registration.";
       redirectText.textContent = "Redirecting to Payment page in 3 seconds...";
 
@@ -1190,6 +1241,7 @@
       }, 3000);
     });
 
+    // ===== CLEAR ERRORS ON INPUT =====
     const inputsToWatch = ["firstName", "lastName", "birthDate", "email", "phone", "confirmPassword"];
     inputsToWatch.forEach((id) => {
       const el = document.getElementById(id);
